@@ -1,6 +1,6 @@
 {
-    "name": "tabalho",
-    "short_name": "tabalho",
+    "name": "eco_share",
+    "short_name": "eco_share",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
