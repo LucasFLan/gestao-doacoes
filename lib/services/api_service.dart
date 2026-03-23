@@ -48,7 +48,7 @@ final class ApiService {
         descricao: 'Bicicleta em ótimo estado para criança de 5 a 8 anos.',
         categoria: 'Esportes',
         estadoConservacao: 'Bom',
-        imageUrl: null,
+        imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
         isLocalSync: false,
       ),
       ItemDoacao(
@@ -57,7 +57,7 @@ final class ApiService {
         descricao: 'Coleção de livros de ensino fundamental.',
         categoria: 'Livros',
         estadoConservacao: 'Novo',
-        imageUrl: null,
+        imageUrl: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800',
         isLocalSync: false,
       ),
       ItemDoacao(
@@ -66,7 +66,7 @@ final class ApiService {
         descricao: 'Sofá retrátil, tecido azul, pouco uso.',
         categoria: 'Móveis',
         estadoConservacao: 'Regular',
-        imageUrl: null,
+        imageUrl: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800',
         isLocalSync: false,
       ),
     ];
