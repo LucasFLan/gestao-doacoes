@@ -36,6 +36,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person_outline),
+            onPressed: () => context.push(AppRouter.perfil),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => context.push(AppRouter.cadastroItem),
+        icon: const Icon(Icons.add),
+        label: const Text('Doar'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: switch (state) {
         DonationFeedLoading() => const _LoadingView(),

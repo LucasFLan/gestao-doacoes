@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/item_doacao.dart';
+import '../widgets/picked_image_widget.dart';
 
 class ItemDetailScreen extends StatelessWidget {
   const ItemDetailScreen({super.key, required this.item});
@@ -135,34 +136,8 @@ class _DetailHeroImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      url,
-      fit: BoxFit.cover,
-      width: double.infinity,
-      errorBuilder: (_, __, ___) => Container(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        child: Center(
-          child: Icon(
-            Icons.image_not_supported_outlined,
-            size: 80,
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
-        ),
-      ),
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-        return Container(
-          color: Theme.of(context).colorScheme.surfaceContainerLow,
-          child: Center(
-            child: CircularProgressIndicator(
-              value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded /
-                        loadingProgress.expectedTotalBytes!
-                  : null,
-            ),
-          ),
-        );
-      },
+    return SizedBox.expand(
+      child: buildPickedImage(url),
     );
   }
 }
