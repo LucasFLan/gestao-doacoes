@@ -1,15 +1,16 @@
 import 'package:go_router/go_router.dart';
 
 import '../../models/item_doacao.dart';
+import '../../screens/cadastro_doacao_screen.dart';
 import '../../screens/home_screen.dart';
 import '../../screens/item_detail_screen.dart';
+import '../../screens/perfil_screen.dart';
 
 final class AppRouter {
   AppRouter._();
 
   static const String home = '/';
   static const String itemDetail = '/item';
-  static const String login = '/login';
   static const String cadastroItem = '/cadastro-item';
   static const String perfil = '/perfil';
 
@@ -29,6 +30,16 @@ final class AppRouter {
           final item = state.extra as ItemDoacao;
           return ItemDetailScreen(item: item);
         },
+      ),
+      GoRoute(
+        path: '/cadastro-item',
+        name: 'cadastroItem',
+        builder: (context, state) => const CadastroDoacaoScreen(),
+      ),
+      GoRoute(
+        path: '/perfil',
+        name: 'perfil',
+        builder: (context, state) => const PerfilScreen(),
       ),
     ],
   );

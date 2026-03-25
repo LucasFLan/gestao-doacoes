@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../core/exceptions/app_exceptions.dart';
 import '../models/item_doacao.dart';
+import '../models/usuario.dart';
 import '../services/api_service.dart';
 import '../services/database_helper.dart';
 import 'app_providers.dart';
@@ -61,10 +62,24 @@ class DonationFeedNotifier extends StateNotifier<DonationFeedState> {
     }
   }
 
+  static const String _usuarioPadraoId = 'default';
+
   Future<void> cadastrarItem(ItemDoacao item) async {
     try {
       final itemLocal = item.copyWith(isLocalSync: true);
       await DatabaseHelper.insertItem(itemLocal);
+
+      var usuario = await DatabaseHelper.getUsuario(_usuarioPadraoId);
+      if (usuario == null) {
+        usuario = Usuario(id: _usuarioPadraoId, nome: 'Usuário');
+        await DatabaseHelper.insertOuAtualizarUsuario(usuario);
+      }
+      await DatabaseHelper.atualizarEstatisticasUsuario(
+        usuarioId: _usuarioPadraoId,
+        doacoesFeitas: usuario.doacoesFeitas + 1,
+        vidasSalvas: usuario.vidasSalvas + 2,
+      );
+
       try {
         await _apiService.enviarDoacao(item);
         await DatabaseHelper.marcarItemSincronizado(item.id);
